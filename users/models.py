@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 class User(AbstractUser):
-    username = models.CharField(max_length=50, blank=True, null=True)
+    username = models.TextField(max_length=50, blank=True, null=True)
     email = models.EmailField(_('email address'), unique=True)
 
     USERNAME_FIELD = 'email'
@@ -32,7 +32,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
     title = models.CharField(max_length=5)
     dob = models.DateField()
-    address = models.CharField(max_length=255)
-    phone_number = models.CharField(null=False, blank = False, unique=True, max_length=20)
-    avail_status = models.CharField(max_length=20, null=False, blank = False, choices=AvailStatus.choices, default='UNAVAILABLE')
-    whoami = models.CharField(null=False, blank = False,max_length=10, choices=WhoAmI.choices)
+    address = models.TextField(max_length=255)
+    phone_number = models.TextField(null=False, blank = False, unique=True, max_length=20)
+    avail_status = models.TextField(max_length=20, null=False, blank = False, choices=AvailStatus.choices, default='UNAVAILABLE')
+    whoami = models.TextField(null=False, blank = False,max_length=10, choices=WhoAmI.choices)

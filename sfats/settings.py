@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'sfats.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dn5qiq1k91kj5',                      
+        'USER': 'taanveztgqouyu',
+        'PASSWORD': '3e656cd497a4335805c4989c0a1ae2eddd541da8f62e9b1807102904e06f1593',
+        'HOST': 'ec2-18-213-176-229.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
