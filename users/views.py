@@ -11,12 +11,14 @@ from .serializer import UserSerializer, UserProfileSerializer, UserLoginSerializ
 from rest_framework import status
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.decorators import action, permission_classes  # other imports elided
 
 
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)  # used for default ViewSet endpoints
+
     search_fields = ['first_name', 'last_name']
     filter_backends = (filters.SearchFilter,)
     queryset = User.objects.all()
@@ -24,7 +26,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
-    permission_classes = (AllowAny,)
+    # permission_classes = (AllowAny,)
+    # permission_classes = (IsAuthenticated,)  # used for default ViewSet endpoints
+    permission_classes = (IsAuthenticatedOrReadOnly,)  # used for default ViewSet endpoints
 
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
@@ -50,7 +54,7 @@ class UserRegistrationView(CreateAPIView):
         return Response(response, status=status_code)
 
 class UserLoginView(RetrieveAPIView):
-    
+
     permission_classes = (AllowAny,)
     serializer_class = UserLoginSerializer
 

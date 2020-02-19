@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^login', UserLoginView.as_view()),
     url(r'^signup', UserRegistrationView.as_view()),
     # path('api/', include(users.urls)),
-    path('api', include(router.urls)),
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('api-auth/',include('rest_framework.urls')),
     path('api/token/',TokenObtainPairView.as_view()),
