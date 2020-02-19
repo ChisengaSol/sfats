@@ -26,7 +26,7 @@ SECRET_KEY = '7)ox=d$#(rb=w4x$!@y^%cw8!b*-a*iayz)t!%2(38iu3b0gu&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sfats.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['sfats.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -41,10 +41,14 @@ INSTALLED_APPS = [
     'users',
     'schedule',
     'rest_framework',
+    'corsheaders'
 ]
 
 AUTH_USER_MODEL = 'users.User'
 
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:4200",
+]
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -55,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'sfats.urls'
