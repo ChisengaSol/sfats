@@ -25,7 +25,7 @@ SECRET_KEY = '7)ox=d$#(rb=w4x$!@y^%cw8!b*-a*iayz)t!%2(38iu3b0gu&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sfats.herokuapp.com']
 
 
 # Application definition
