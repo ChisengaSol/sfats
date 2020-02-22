@@ -18,20 +18,17 @@ class User(AbstractUser):
 
         
 class UserProfile(models.Model):
-
+    
     class WhoAmI(models.TextChoices):
         STAFF = 'STAFF'
         FACULTY = 'FACULTY'
 
-
     class AvailStatus (models.TextChoices):
-        AVAILABLE= 'AVAILBLE'
+        AVAILABLE= 'AVAILABLE'
         UNAVAILABLE = 'UNAVAILABLE'
-
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
     title = models.CharField(max_length=5)
-    dob = models.DateField()
     address = models.TextField(max_length=255)
     phone_number = models.TextField(null=False, blank = False, unique=True, max_length=20)
     avail_status = models.TextField(max_length=20, null=False, blank = False, choices=AvailStatus.choices, default='UNAVAILABLE')
