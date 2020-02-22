@@ -17,7 +17,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = '__all__'
     
-    user_id = UserSerializer(source='user', read_only=True)
+    user_details = UserSerializer(source='user', read_only=True)
 
 from rest_framework import serializers
 from .models import UserProfile
