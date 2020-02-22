@@ -36,7 +36,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True},}
 
     def create(self, validated_data):
-        import pdb; pdb.set_trace()
         # profile_data = validated_data.pop('profile')
         user = User.objects.create_user(**validated_data)
         # UserProfile.objects.create(
