@@ -7,4 +7,4 @@ class ScheduleSerializer(serializers.ModelSerializer):
         model = Schedule
         fields = '__all__'
 
-    stafalty = UserSerializer()
+    user_details = UserSerializer(source='stafalty', read_only=True)
